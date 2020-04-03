@@ -1,0 +1,15 @@
+{
+  "PORT": 3000,
+  "secret": "yoursecret",
+  "auth": {
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "encrypt": {
+    "xml_string": "",
+    parsedjson: {
+      Exponent: ""
+      Modulus: ""
+    }
+  }
+}

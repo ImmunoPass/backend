@@ -1,0 +1,53 @@
+{
+  "name": "immunopass",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "test": "export NODE_ENV=test && mocha tests/unit && mocha tests/integration"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^3.1.9-1",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "formidable": "^1.2.2",
+    "helmet": "^3.21.2",
+    "http-errors": "~1.6.3",
+    "http-status": "^1.4.2",
+    "https": "^1.0.0",
+    "jade": "~1.11.0",
+    "lodash": "^4.17.15",
+    "mocha": "^7.1.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.0.1",
+    "node-oauth1": "^1.2.2",
+    "node-rsa": "^1.0.7",
+    "oauth-1.0a": "^2.2.6",
+    "postman-collection": "^3.5.5",
+    "postman-request": "^2.88.1-postman.18",
+    "postman-url-encoder": "^1.0.3",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "rsa-key": "0.0.6",
+    "rxjs": "^6.5.4",
+    "sequelize": "^5.21.2",
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1",
+    "xml2js": "^0.4.23",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
+}

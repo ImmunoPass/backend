@@ -1,0 +1,27 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "carrot_dev",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": 0
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "carrot_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": 0
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "carrot_prod",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": 0
+    },
+    "use_env_variable": "NODE_ENV"
+}
