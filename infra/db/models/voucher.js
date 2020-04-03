@@ -1,7 +1,8 @@
 "use strict";
-const userIdentity = require("userIdentity");
-const organization = require("organization");
-const pathLab = require("pathLab");
+const Sequelize = require("sequelize");
+// const userIdentity = require("./useridentity");
+// const organization = require("./organization");
+// const pathLab = require("./pathLab");
 module.exports = (sequelize, DataTypes) => {
   const voucher = sequelize.define(
     "voucher",

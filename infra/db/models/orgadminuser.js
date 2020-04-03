@@ -1,6 +1,7 @@
 "use strict";
-const userIdentity = require("userIdentity");
-const organization = require("organization");
+const Sequelize = require("sequelize");
+// const userIdentity = require("./userIdentity");
+// const organization = require("./organization");
 module.exports = (sequelize, DataTypes) => {
   const orgAdminUser = sequelize.define(
     "orgAdminUser",

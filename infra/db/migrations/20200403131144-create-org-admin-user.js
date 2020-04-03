@@ -4,7 +4,7 @@ module.exports = {
     return queryInterface.createTable("orgAdminUsers", {
       userId: {
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
         type: Sequelize.UUID
       },

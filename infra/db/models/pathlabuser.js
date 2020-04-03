@@ -1,6 +1,7 @@
 "use strict";
-const userIdentity = require("userIdentity");
-const pathLab = require("pathLab");
+const Sequelize = require("sequelize");
+// const userIdentity = require("./userIdentity");
+// const pathLab = require("./pathLab");
 module.exports = (sequelize, DataTypes) => {
   const pathLabUser = sequelize.define(
     "pathLabUser",
