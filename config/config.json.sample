@@ -6,6 +6,8 @@
     "consumer_secret": ""
   },
   "authToken": "",
+  "ipassToken":"",
+  "ipassURL":"",
   "encrypt": {
   }
 }

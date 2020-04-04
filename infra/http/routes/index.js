@@ -1,11 +1,15 @@
 const express = require("express");
 const { authToken } = require("../../../config/config.json");
 const smsDependencies = require("../../../dependencies/smsDependencies");
+const testReportDependencies = require("../../../dependencies/testReportDependencies");
 const {
   loginOtpApi,
   sendImmunopassPassApi,
   sendImmunopassVoucherApi
 } = require("../../../controllers/sms")(smsDependencies);
+const { testReportWebHookApi } = require("../../../controllers/testReport")(
+  testReportDependencies
+);
 
 var router = express.Router();
 
@@ -82,6 +86,15 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
     if (error.type === "VALIDATION_FAIL") {
       return res.status(400).send({ status: "FAIL" });
     }
+    return res.status(500).send({ status: "FAIL" });
+  }
+});
+
+router.post("/v1/test-reports/webhook", async (req, res) => {
+  try {
+    const payload = req.body;
+    testReportWebHookApi({ payload, provider: "LiveHealth" });
+  } catch (error) {
     return res.status(500).send({ status: "FAIL" });
   }
 });
