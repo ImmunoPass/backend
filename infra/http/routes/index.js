@@ -1,6 +1,7 @@
 const express = require('express');
-const container = require('../../../dependencies');
-const {sampleAPI} = require('../../../controllers/sample')(container);
+const {authToken} = require('../../../config/config.json');
+const smsDependencies = require('../../../dependencies/smsDependencies');
+const {loginOtpApi} = require('../../../controllers/sms')(smsDependencies);
 
 var router = express.Router();
 
@@ -8,16 +9,24 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.send({ status: 'running' });
 });
-router.post('/v1/sample', async function(req, res, next) {
+router.post('/v1/sms/login-otp', async (req, res) => {
   try {
-    await sampleAPI({});
-    res.sendStatus(200);
-  } catch (error) {
-    if (error.type == 'VALIDATION_FAIL') {
-      return res.sendStatus(400);
+    const auth = req.get('Authentication');
+    if (auth !== authToken) {
+      throw {type: 'AUTH_FAIL'};
     }
-    // use if conditions to handle different errors thrown
-    return res.sendStatus(500);
+    await loginOtpApi({
+      to: req.body.to,
+      otp: req.body.otp
+    });
+    return res.status(200).send({
+      status: 'OK'
+    });
+  } catch (error) {
+    if (error.type === 'AUTH_FAIL') {
+      return res.status(401).send({status: 'FAIL'})
+    }
+    return res.status(500).send({status: 'FAIL'});
   }
 });
 

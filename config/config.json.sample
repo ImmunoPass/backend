@@ -5,11 +5,7 @@
     "consumer_key": "",
     "consumer_secret": ""
   },
+  "authToken": "",
   "encrypt": {
-    "xml_string": "",
-    parsedjson: {
-      Exponent: ""
-      Modulus: ""
-    }
   }
 }
