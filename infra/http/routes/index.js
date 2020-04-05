@@ -93,7 +93,7 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
 router.post("/v1/test-reports/webhook", async (req, res) => {
   try {
     const payload = req.body;
-    testReportWebHookApi({ payload, provider: "LiveHealth" });
+    await testReportWebHookApi({ payload, provider: "LiveHealth" });
   } catch (error) {
     return res.status(500).send({ status: "FAIL" });
   }
