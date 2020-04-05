@@ -5,7 +5,7 @@ const testReportDependencies = require("../../../dependencies/testReportDependen
 const {
   loginOtpApi,
   sendImmunopassPassApi,
-  sendImmunopassVoucherApi
+  sendImmunopassVoucherApi,
 } = require("../../../controllers/sms")(smsDependencies);
 const { testReportWebHookApi } = require("../../../controllers/testReport")(
   testReportDependencies
@@ -14,7 +14,7 @@ const { testReportWebHookApi } = require("../../../controllers/testReport")(
 var router = express.Router();
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   res.send({ status: "running" });
 });
 
@@ -26,10 +26,10 @@ router.post("/v1/sms/login-otp", async (req, res) => {
     }
     await loginOtpApi({
       to: req.body.to,
-      otp: req.body.otp
+      otp: req.body.otp,
     });
     return res.status(200).send({
-      status: "OK"
+      status: "OK",
     });
   } catch (error) {
     if (error.type === "AUTH_FAIL") {
@@ -50,10 +50,10 @@ router.post("/v1/sms/send-pass", async (req, res) => {
     }
     await sendImmunopassPassApi({
       to: req.body.to,
-      token: req.body.token
+      token: req.body.token,
     });
     return res.status(200).send({
-      status: "OK"
+      status: "OK",
     });
   } catch (error) {
     if (error.type === "AUTH_FAIL") {
@@ -74,10 +74,10 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
     }
     await sendImmunopassVoucherApi({
       to: req.body.to,
-      voucherCode: req.body.voucherCode
+      voucherCode: req.body.voucherCode,
     });
     return res.status(200).send({
-      status: "OK"
+      status: "OK",
     });
   } catch (error) {
     if (error.type === "AUTH_FAIL") {
@@ -93,7 +93,10 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
 router.post("/v1/test-reports/webhook", async (req, res) => {
   try {
     const payload = req.body;
-    await testReportWebHookApi({ payload, provider: "LiveHealth" });
+    await testReportWebHookApi({
+      testReportPayload: payload,
+      provider: "LiveHealth",
+    });
   } catch (error) {
     return res.status(500).send({ status: "FAIL" });
   }
