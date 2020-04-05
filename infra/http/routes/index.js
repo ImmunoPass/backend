@@ -99,7 +99,11 @@ router.post("/v1/test-reports/webhook", async (req, res) => {
     });
     res.status(200).send({status: 'OK'});
     if (status === true && next !== null) {
-      await next();
+      try {
+        await next();
+      } catch (error) {
+        // @todo write this to error logs
+      }
     }
   } catch (error) {
     return res.status(500).send({ status: "FAIL" });
