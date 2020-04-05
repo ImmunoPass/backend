@@ -97,8 +97,8 @@ router.post("/v1/test-reports/webhook", async (req, res) => {
       testReportPayload: payload,
       provider: "LiveHealth",
     });
-    res.status(200).send({status: 'OK'});
-    if (status === true && next !== null) {
+    res.status(200).send({ status: "OK" });
+    if (result.status === true && result.next !== null) {
       try {
         await next();
       } catch (error) {
