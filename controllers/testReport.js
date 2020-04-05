@@ -1,4 +1,4 @@
-module.exports = ({ testResportRepo, testReportService }) => {
+module.exports = ({ testReportRepo, testReportService }) => {
   async function testReportWebHookApi({ testReportPayload, provider }) {
     //Validate data @todo
     //Authenticate the call
@@ -8,11 +8,9 @@ module.exports = ({ testResportRepo, testReportService }) => {
       testResult: testReportPayload.reportFormatAndValues[0]["value"],
       testType: testReportPayload["Test Name"],
       reportProvider: provider,
-      reportId: testReportPayload.labReportId
+      reportId: testReportPayload.labReportId + "",
     };
-
-    const testReport = await testResportRepo.create(testReportData);
-    console.log(testReport);
+    const testReport = await testReportRepo.create(testReportData);
 
     await testReportService.send(testReport);
     return true;
