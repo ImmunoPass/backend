@@ -4,12 +4,13 @@ module.exports = ({ testReportRepo, testReportService }) => {
     //Authenticate the call
     const testReportData = {
       paitentName: testReportPayload["Patient Name"],
-      paitenMobileNumber: testReportPayload.labPatientId,
+      paitentMobileNumber: testReportPayload.labPatientId,
       testResult: testReportPayload.reportFormatAndValues[0]["value"],
       testType: testReportPayload["Test Name"],
       reportProvider: provider,
       reportId: testReportPayload.labReportId + "",
     };
+    console.log("testReportData:",testReportData)
     const testReport = await testReportRepo.create(testReportData);
 
     const next = async () => {

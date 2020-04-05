@@ -22,7 +22,7 @@ module.exports = ({
     await sendImmunopassPassApiValidation({ to, token });
     const sms = {
       to: to,
-      body: `You have been assigned a ImmunoPass for a coronavirus. Your ImmunePass token is ${token}}. Call 6789 for further information.`,
+      body: `You have been assigned a ImmunoPass for a coronavirus. Your ImmunePass token is ${token}. Call 6789 for further information.`,
       priority: "High"
     };
 
