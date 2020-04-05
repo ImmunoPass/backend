@@ -3,4 +3,4 @@ WORKDIR /app
 COPY $PWD /app
 RUN npm install
 EXPOSE 3000
-CMD ["npm", "run", "forever"]
+CMD ["npm", "run", "start"]

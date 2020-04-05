@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "forever": "forever stop index.js && forever start index.js",
+    "forever": "forever start index.js",
     "test": "export NODE_ENV=test && mocha tests/unit && mocha tests/integration"
   },
   "dependencies": {
