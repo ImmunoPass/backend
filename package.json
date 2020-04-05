@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
+    "forever": "forever stop index.js && forever start index.js",
     "test": "export NODE_ENV=test && mocha tests/unit && mocha tests/integration"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "crypto-js": "^3.1.9-1",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "forever": "^2.0.0",
     "formidable": "^1.2.2",
     "helmet": "^3.21.2",
     "http-errors": "~1.6.3",
