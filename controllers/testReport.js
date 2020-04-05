@@ -12,8 +12,10 @@ module.exports = ({ testReportRepo, testReportService }) => {
     };
     const testReport = await testReportRepo.create(testReportData);
 
-    await testReportService.send(testReport);
-    return true;
+    const next = async () => {
+      await testReportService.send(testReport);
+    }
+    return {status: true, next};
   }
   return { testReportWebHookApi };
 };
