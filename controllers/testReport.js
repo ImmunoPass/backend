@@ -10,7 +10,6 @@ module.exports = ({ testReportRepo, testReportService }) => {
       reportProvider: provider,
       reportId: testReportPayload.labReportId + "",
     };
-    console.log("testReportData:",testReportData)
     const testReport = await testReportRepo.create(testReportData);
 
     const next = async () => {
