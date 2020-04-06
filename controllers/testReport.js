@@ -11,11 +11,10 @@ module.exports = ({ testReportRepo, testReportService }) => {
       reportId: testReportPayload.labReportId + "",
     };
     const testReport = await testReportRepo.create(testReportData);
-
     const next = async () => {
       await testReportService.send(testReport);
-    }
-    return {status: true, next};
+    };
+    return { status: true, next };
   }
   return { testReportWebHookApi };
 };

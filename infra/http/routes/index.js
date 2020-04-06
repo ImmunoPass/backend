@@ -95,7 +95,7 @@ router.post("/v1/test-reports/webhook/:providerID", async (req, res) => {
     const payload = req.body;
     const result = await testReportWebHookApi({
       testReportPayload: payload,
-      provider: req.param.providerID,
+      provider: req.params.providerID,
     });
     res.status(200).send({ status: "OK" });
     if (result.status === true && result.next !== null) {
