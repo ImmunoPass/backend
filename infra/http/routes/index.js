@@ -90,12 +90,12 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
   }
 });
 
-router.post("/v1/test-reports/webhook", async (req, res) => {
+router.post("/v1/test-reports/webhook/:providerID", async (req, res) => {
   try {
     const payload = req.body;
     const result = await testReportWebHookApi({
       testReportPayload: payload,
-      provider: "LiveHealth",
+      provider: req.param.providerID,
     });
     res.status(200).send({ status: "OK" });
     if (result.status === true && result.next !== null) {
