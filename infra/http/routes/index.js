@@ -27,6 +27,7 @@ router.post("/v1/sms/login-otp", async (req, res) => {
     await loginOtpApi({
       to: req.body.to,
       otp: req.body.otp,
+      userName: req.body.userName,
     });
     return res.status(200).send({
       status: "OK",
@@ -51,6 +52,7 @@ router.post("/v1/sms/send-pass", async (req, res) => {
     await sendImmunopassPassApi({
       to: req.body.to,
       token: req.body.token,
+      userStatus: req.body.userStatus,
     });
     return res.status(200).send({
       status: "OK",
@@ -75,6 +77,9 @@ router.post("/v1/sms/send-voucher", async (req, res) => {
     await sendImmunopassVoucherApi({
       to: req.body.to,
       voucherCode: req.body.voucherCode,
+      userName: req.body.userName,
+      userMobileNumber: req.body.userMobileNumber,
+      userDOB: req.body.userDOB,
     });
     return res.status(200).send({
       status: "OK",

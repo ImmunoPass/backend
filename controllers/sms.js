@@ -2,14 +2,14 @@ module.exports = ({
   smsService,
   loginOtpApiValidation,
   sendImmunopassPassApiValidation,
-  sendImmunopassVoucherApiValidation
+  sendImmunopassVoucherApiValidation,
 }) => {
-  async function loginOtpApi({ to, otp }) {
-    await loginOtpApiValidation({ to, otp });
+  async function loginOtpApi({ to, otp, userName }) {
+    await loginOtpApiValidation({ to, otp, userName });
     const sms = {
       to: to,
-      body: `Your login OTP is ${otp}}`,
-      priority: "High"
+      body: `Hi ${userName}, your OTP to log into the ImmunoPass administrator portal is ${otp}. Please do not share this OTP with anyone.`,
+      priority: "High",
     };
     const d = await smsService.send(sms);
     // @todo remove the log later
@@ -18,24 +18,36 @@ module.exports = ({
     return true;
   }
 
-  async function sendImmunopassPassApi({ to, token }) {
-    await sendImmunopassPassApiValidation({ to, token });
+  async function sendImmunopassPassApi({ to, token, userStatus }) {
+    await sendImmunopassPassApiValidation({ to, token, userStatus });
     const sms = {
       to: to,
-      body: `You have been assigned a ImmunoPass for a coronavirus. Your ImmunePass token is ${token}. Call 6789 for further information.`,
-      priority: "High"
+      body: `Your coronavirus antibody status is ${userStatus}. Your certificate number is ${token}. Please show this SMS if you are asked about your immunity status. Click here to learn more - https://tinyurl.com/szs7fwu.`,
+      priority: "High",
     };
 
     await smsService.send(sms);
     return true;
   }
 
-  async function sendImmunopassVoucherApi({ to, voucherCode }) {
-    await sendImmunopassVoucherApiValidation({ to, voucherCode });
+  async function sendImmunopassVoucherApi({
+    to,
+    voucherCode,
+    userName,
+    userMobileNumber,
+    userDOB,
+  }) {
+    await sendImmunopassVoucherApiValidation({
+      to,
+      voucherCode,
+      userName,
+      userMobileNumber,
+      userDOB,
+    });
     const sms = {
       to: to,
-      body: `You have been assigned a voucher for a coronavirus immunity test. Your voucher code is ${voucherCode}. Please wait for further instructions from your employer. Call 6789 for further information.`,
-      priority: "High"
+      body: `You have been assigned a voucher for a coronavirus immunity test. Your voucher details are - Voucher Code: ${voucherCode}, Name: ${userName}, Phone: ${userMobileNumber}, DOB: ${userDOB}. Visit https://tinyurl.com/szs7fwu to find your nearest laboratory for testing. Please carry this SMS along with your Aadhaar card for authentication at the lab.`,
+      priority: "High",
     };
 
     await smsService.send(sms);
