@@ -22,11 +22,12 @@ module.exports = ({
     await sendImmunopassPassApiValidation({ to, token, userStatus });
     const sms = {
       to: to,
-      body: `Your coronavirus antibody status is ${userStatus}. Your certificate number is ${token}. Please show this SMS if you are asked about your immunity status. Click here to learn more - https://tinyurl.com/szs7fwu.`,
+      body: `Your coronavirus antibody status is ${userStatus}. Your certificate number is ${token}. Please show this SMS if you are asked about your immunity status. Click here https://tinyurl.com/szs7fwu to learn more.`,
       priority: "High",
     };
 
-    await smsService.send(sms);
+    const result = await smsService.send(sms);
+    console.log(result);
     return true;
   }
 
