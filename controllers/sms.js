@@ -47,7 +47,7 @@ module.exports = ({
     });
     const sms = {
       to: to,
-      body: `You have been assigned a voucher for a coronavirus immunity test. Your voucher details are - Voucher Code: ${voucherCode}, Name: ${userName}, Phone: ${userMobileNumber}, DOB: ${userDOB}. Visit https://tinyurl.com/szs7fwu to find your nearest laboratory for testing. Please carry this SMS along with your Aadhaar card for authentication at the lab.`,
+      body: `You have been assigned a voucher for a coronavirus immunity test. Your voucher details are - Voucher Code: ${voucherCode}, Name: ${userName}, Phone: ${userMobileNumber}, DOB: ${userDOB}. Visit https://tinyurl.com/szs7fwu to find your nearest laboratory for testing. Please carry this SMS along with your ID card for authentication at the lab.`,
       priority: "High",
     };
 
